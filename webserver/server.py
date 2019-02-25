@@ -79,3 +79,26 @@ def teardown_request(exception):
     g.conn.close()
   except Exception as e:
     pass
+
+
+#
+# @app.route is a decorator around index() that means:
+#   run index() whenever the user tries to access the "/" path using a GET request
+#
+# If you wanted the user to go to e.g., localhost:8111/foobar/ with POST or GET then you could use
+#
+#       @app.route("/foobar/", methods=["POST", "GET"])
+#
+# PROTIP: (the trailing / in the path is important)
+#
+# see for routing: http://flask.pocoo.org/docs/0.10/quickstart/#routing
+# see for decorators: http://simeonfranklin.com/blog/2012/jul/1/python-decorators-in-12-steps/
+#
+@app.route('/')
+def home():
+    if not session.get('logged_in') and not session.get('user_logged_in'):
+        return render_template('main.html')
+    elif session.get('logged_in'):
+        return login_page()
+    else:
+        return user_login_page()
