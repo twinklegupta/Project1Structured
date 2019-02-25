@@ -102,3 +102,29 @@ def home():
         return login_page()
     else:
         return user_login_page()
+
+@app.route('/user/login', methods=['POST'])
+def do_user_login():
+    flag = 0
+    cursor = g.conn.execute("SELECT user_id, password FROM users")
+    global USER_IDID
+    for record in cursor:
+      if record[0] == int(request.form['id']) and record[1] == request.form['password']:
+        USER_IDID = int(record[0])
+        session['user_logged_in'] = True
+        flag = 1
+        break;
+
+    if not flag:
+      flash("Wrong password")
+
+    return home()
+
+@app.route('/logout')
+def logout():
+    session['user_logged_in'] = False
+    session['logged_in'] = False
+    global USER_IDID
+    USER_IDID = None
+
+    return home()
