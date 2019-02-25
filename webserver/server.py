@@ -177,7 +177,7 @@ def do_admin_login():
       flash("Wrong password")
 
     return home()
-    
+
 def user_login_page():
   return render_template("user_logged_in.html")
 
@@ -185,3 +185,11 @@ def user_login_page():
 
 def login_page():
   return render_template("logged_in.html")
+
+ @app.route('/enter_database')
+def enter_data():
+    return render_template("enter_data.html")
+
+ @app.route('/get_database')
+def get_data():
+    return render_template("get_database.html")
