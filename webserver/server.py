@@ -251,6 +251,7 @@ def get_producer_table():
 
 @app.route('/get_award_table')
 def get_award_table():
+    # TODO: add pagin supoort
     cursor = g.conn.execute("SELECT A.name, A.year, A.category, M.name FROM award_given as A, motion_picture as M WHERE A.pic_id = M.pic_id")
     names = []
     for result in cursor:
