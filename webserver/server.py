@@ -105,6 +105,7 @@ def home():
 
 @app.route('/user/login', methods=['POST'])
 def do_user_login():
+    # TODO: add capcha
     flag = 0
     cursor = g.conn.execute("SELECT user_id, password FROM users")
     global USER_IDID
