@@ -599,6 +599,7 @@ def review_add():
 
 @app.route('/wishlist')
 def enter_wishlist():
+    #TODO: display rating for pictures in wishlist
     cursor = g.conn.execute("SELECT pic_id, name FROM motion_picture")
     names = []
     for result in cursor:
