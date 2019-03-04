@@ -655,6 +655,7 @@ def view_wishlist():
 
 @app.route('/view_movies')
 def view_movies():
+    # TODO: display movie cover photo
     cursor = g.conn.execute("SELECT * FROM motion_picture as M")
     names = []
     for result in cursor:
