@@ -402,6 +402,7 @@ def enter_admin():
 
 @app.route('/admin/add',methods=['POST'])
 def admin_add():
+    # TODO: 2 FAC authentication
     ID = request.form['id']
     password = request.form['password']
     re_password = request.form['re_password']
