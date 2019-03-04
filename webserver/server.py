@@ -214,6 +214,7 @@ def get_picture_table():
 
 @app.route('/get_actor_table')
 def get_actor_table():
+    #TODO: add paging support
     cursor = g.conn.execute("SELECT * FROM actor")
     names = []
     for result in cursor:
