@@ -433,6 +433,7 @@ def enter_awards():
 
 @app.route('/awards/add',methods=['POST'])
 def awards_add():
+    # TODO: add presenter
     name = request.form['name']
     year = request.form['year']
     category = request.form['category']
